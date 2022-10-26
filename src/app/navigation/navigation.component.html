@@ -1,0 +1,120 @@
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row class="firstRow">
+    <div class="titleWrapper">
+      <img class="titleIcon" src="/assets/icons/favicon.png" />
+      <span class="title">Lost Ark Market Online</span>
+    </div>
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent>
+        <button
+          mat-menu-item
+          (click)="common.updateRegion('Europe West', true)"
+        >
+          Europe West
+        </button>
+        <button
+          mat-menu-item
+          (click)="common.updateRegion('Europe Central', true)"
+        >
+          Europe Central
+        </button>
+        <button
+          mat-menu-item
+          (click)="common.updateRegion('North America West', true)"
+        >
+          North America West
+        </button>
+        <button
+          mat-menu-item
+          (click)="common.updateRegion('North America East', true)"
+        >
+          North America East
+        </button>
+        <button
+          mat-menu-item
+          (click)="common.updateRegion('South America', true)"
+        >
+          South America
+        </button>
+      </ng-template>
+    </mat-menu>
+    <span class="spacer"></span>
+    <button
+      matTooltip="Pick your region"
+      matTooltipPosition="below"
+      mat-button
+      [matMenuTriggerFor]="appMenu"
+    >
+      {{ common.region }}
+    </button>
+    <div class="buttons">
+      <button
+        class="applyBtn"
+        matTooltip="Apply to become a Watcher"
+        matTooltipPosition="below"
+        mat-icon-button
+        (click)="openApplyDialog()"
+      >
+        <mat-icon>admin_panel_settings</mat-icon>
+      </button>
+      <a
+        target="_blank"
+        class="iconBtn"
+        href="https://discord.gg/qfSFqvk6cG"
+        matTooltip="Join us on Discord"
+        matTooltipPosition="below"
+        ><img src="/assets/icons/discord.png"
+      /></a>
+      <a
+        target="_blank"
+        class="iconBtn"
+        href="https://github.com/gogodr/LostArk-Market-Web"
+        matTooltip="Follow the project on Github"
+        matTooltipPosition="below"
+        ><img src="/assets/icons/github.png"
+      /></a>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="secondRow scrollable">
+    <a
+      [routerLink]="['/' + common.regionSlug, 'market']"
+      routerLinkActive="active"
+      class="tab"
+    >
+      <span>Market</span>
+    </a>
+    <a
+      [routerLink]="['/' + common.regionSlug, 'crafting']"
+      routerLinkActive="active"
+      class="tab"
+    >
+      <span>Crafting Calculator</span>
+    </a>
+    <a
+      [routerLink]="['/' + common.regionSlug, 'cash-shop']"
+      routerLinkActive="active"
+      class="tab"
+    >
+      <span>Cash Shop</span>
+    </a>
+    <a href="https://lostark-helper.com" target="_blank" class="tab">
+      <mat-icon>link</mat-icon>
+      <span>LA Helper</span>
+    </a>
+    <a
+      href="https://lostark.meta-game.gg/"
+      target="_blank"
+      class="tab"
+    >
+      <mat-icon>link</mat-icon>
+      <span>LA Meta-Game</span>
+    </a>
+    <a href="https://documenter.getpostman.com/view/20821530/UyxbppKr" target="_blank" class="tab">
+      <mat-icon>link</mat-icon>
+      <span>API Doc</span>
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="routerContainer">
+  <router-outlet></router-outlet>
+</div>
